@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <math.h>
+
+/**
+ *  @brief
+ * @param x
+ * @param y 
+ * @param z 
+ * @return
+*/
+void get_a(float x, float y, float z);
+
+/**
+ *  @brief
+ * @param x
+ * @param y 
+ * @param z 
+ * @return
+*/
+void get_b(float x, float y, float z);
+
+int main()
+{
+   get_a(0.3, 2.9, 0.5);
+   get_b(0.3, 2.9, 0.5);
+}
+void get_a(float x, float y, float z)
+{
+    float a = pow(x, 3) * pow(tan(pow(x + y, 2)),2)+ z / sqrt(x+y);
+    printf("a = %f\n", a);
+}
+void get_b(float x, float y, float z)
+{
+    float b = (y * pow(x, 2) - z) / (exp(x * z)-1);
+    printf("b = %f\n",b);
+}
