@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <float.h>
+double function(double x);
+
+double summ(double x, double e);
+
+int main()
+{
+    int res;
+    
+    double step;
+    double const a = 0.1;
+    double x = a;
+    double const b = 0.8;
+    puts("Enter step");
+    res = scanf_s("%1f",&step);
+    double e = pow(40, -5);
+    printf("%1f", x);
+    while ((fabs(x - a) >= DBL_MIN) && (fabs(x - b) <= DBL_MIN))
+    {
+        puts("x");
+        printf("%1f %1f %1f", x, function(x), summ(x, e));
+        x += step;
+    }
+    return 0;
+}
+
+double function(double x)
+{
+    return log10(1 / (2 + 2 * x + pow(x, 2)));
+}
+
+double summ(double x, double e)
+{
+    double sum = 0;
+    int i = 1;
+    double s_i = - pow((1 + x), 2) * i / (i + 1);
+    while (fabs(s_i - e) <= DBL_MIN)
+    {
+        sum += s_i;
+        i++;
+        s_i *= -pow((1 + x), 2) * i / (i + 1);
+    }
+    return sum;
+}
+
